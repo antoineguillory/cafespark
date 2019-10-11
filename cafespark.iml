@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <setting name="provider-name" value="OpenJPA" />
+        <datasource-mapping>
+          <factory-entry name="NewPersistenceUnit" />
+          <factory-entry name="bibliotheque" value="0ccd560f-a96d-45d3-8c4f-8d8405ba3d12" />
+        </datasource-mapping>
+        <naming-strategy-map />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/java/META-INF/persistence.xml" />
+      </configuration>
+    </facet>
+  </component>
+</module>
