@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "album", schema = "ma_db", catalog = "")
 public class AlbumEntity {
     private int id;
-    private String nom;
+    private String nomalb;
 
     @Id
     @Column(name = "id")
@@ -19,13 +19,13 @@ public class AlbumEntity {
     }
 
     @Basic
-    @Column(name = "nom")
+    @Column(name = "nomalb")
     public String getNom() {
-        return nom;
+        return nomalb;
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        this.nomalb = nom;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class AlbumEntity {
         AlbumEntity that = (AlbumEntity) o;
 
         if (id != that.id) return false;
-        if (nom != null ? !nom.equals(that.nom) : that.nom != null) return false;
+        if (nomalb != null ? !nomalb.equals(that.nomalb) : that.nomalb != null) return false;
 
         return true;
     }
@@ -44,7 +44,7 @@ public class AlbumEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (nom != null ? nom.hashCode() : 0);
+        result = 31 * result + (nomalb != null ? nomalb.hashCode() : 0);
         return result;
     }
 }
