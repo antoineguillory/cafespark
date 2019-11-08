@@ -7,8 +7,9 @@ import javax.persistence.*;
 public class AlbumEntity {
     private int id;
     private String nomalb;
+    private Long idartiste;
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -26,6 +27,16 @@ public class AlbumEntity {
 
     public void setNom(String nom) {
         this.nomalb = nom;
+    }
+
+    @Basic
+    @Column(name = "id_artiste")
+    public Long getIdArtiste() {
+        return idartiste;
+    }
+
+    public void setIdArtiste(Long idartiste) {
+        this.idartiste = idartiste;
     }
 
     @Override

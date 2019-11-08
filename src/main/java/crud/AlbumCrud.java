@@ -1,16 +1,27 @@
 package crud;
 
 import model.AlbumManager;
-import persistance.AlbumEntity;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
+import static spark.Spark.put;
+import static spark.Spark.delete;
 
 public class AlbumCrud {
 
 
-    public static void main(String[] args) {
+    public static void crud() {
+
         //CREATE
+        post("/album/create", (req, res) -> {
+            res.type("application/json");
+            String qpar = req.body();
+            AlbumManager am = new AlbumManager();
+            String json = am.createAlbumByJSON(qpar);
+            return json;
+        });
+
+        //READ
         get("/album/read/:id", (req, res) -> {
             res.type("application/json");
             String id = req.params(":id");
@@ -25,20 +36,27 @@ public class AlbumCrud {
             }
         });
 
-        //REPLACE
-        post("/album/replace/:id", (req, res) -> {
-           res.type("application/json");
+
+        //UPDATE
+        put("/album/update/:id", (req, res) -> {
             String id = req.params(":id");
+            res.type("application/json");
             String qpar = req.body();
-            try {
-                Long long_id = Long.parseLong(id);
-                AlbumManager am = new AlbumManager();
-                String json = am.replaceAlbumByID(long_id, qpar);
-                return json;
-            } catch(NumberFormatException e) {
-                res.status(404);
-                return "not found";
-            }
+            AlbumManager am = new AlbumManager();
+            Long long_id = Long.parseLong(id);
+            String json = am.updateAlbumByJSON(long_id, qpar);
+            return json;
+        });
+
+        //DELETE
+        delete("/album/delete/:id", (req, res) -> {
+            String id = req.params(":id");
+            Long long_id = Long.parseLong(id);
+            res.type("application/json");
+            AlbumManager am = new AlbumManager();
+            String json = am.deleteAlbum(long_id);
+            return json;
         });
     }
+
 }
